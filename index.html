@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coach e-commerce : ton programme de 30 jours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBF8FF;--ink:#26143F;--mut:#6B5F82;--card:#fff;--line:#E3D9F2;--acc:#C92F66;--accink:#fff;--soft:#EFE6FF;--ok:#1E8E6A;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17102A;--ink:#F3ECFF;--mut:#B2A5CC;--card:#221840;--line:#3A2D5C;--acc:#FF7BA6;--accink:#1B0D2E;--soft:#2D2150;--ok:#5FD6AE;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17102A;--ink:#F3ECFF;--mut:#B2A5CC;--card:#221840;--line:#3A2D5C;--acc:#FF7BA6;--accink:#1B0D2E;--soft:#2D2150;--ok:#5FD6AE;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 "DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:46rem;margin:0 auto;padding:2.5rem 1.25rem 4rem}
+h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;line-height:1.1;margin:0}
+h1{font-weight:800;font-size:clamp(2.6rem,9vw,4.6rem);letter-spacing:-.02em}
+h2{font-weight:800;font-size:1.7rem;margin-bottom:.75rem}
+h3{font-weight:600;font-size:1.15rem}
+.lead{color:var(--mut);max-width:34rem;margin:1.1rem 0 2rem}
+.q{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:1.1rem 1.2rem 1.2rem;margin:0 0 1rem}
+.q legend{font-weight:700;padding:0 .4rem}
+.opts{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+.opts label{cursor:pointer}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts span{display:inline-block;padding:.5rem .9rem;border:1.5px solid var(--line);border-radius:999px;background:var(--bg)}
+.opts input:checked+span{background:var(--acc);border-color:var(--acc);color:var(--accink);font-weight:700}
+.opts input:focus-visible+span,button:focus-visible,summary:focus-visible,.day input:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+button.main{font:700 1.05rem "DM Sans",system-ui,sans-serif;background:var(--acc);color:var(--accink);border:0;border-radius:12px;padding:.9rem 1.5rem;cursor:pointer}
+button.alt{font:500 .95rem "DM Sans",system-ui,sans-serif;background:none;color:var(--ink);border:1.5px solid var(--line);border-radius:10px;padding:.5rem .9rem;cursor:pointer}
+.err{color:var(--acc);font-weight:700;margin:.75rem 0 0;min-height:1.5em}
+.note{background:var(--soft);border-radius:12px;padding:.9rem 1.1rem;margin:0 0 .8rem}
+.note b{display:block}
+.bar{height:10px;border-radius:99px;background:var(--soft);overflow:hidden;margin:.6rem 0 1.6rem}
+.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+details{border:1px solid var(--line);background:var(--card);border-radius:14px;margin:0 0 .8rem;padding:.2rem 1.1rem}
+summary{cursor:pointer;padding:.8rem 0;font:600 1.15rem "Bricolage Grotesque","DM Sans",system-ui,sans-serif}
+.day{display:flex;gap:.8rem;padding:.7rem 0;border-top:1px solid var(--line)}
+.day input{width:1.35rem;height:1.35rem;margin-top:.2rem;accent-color:var(--acc);flex:none}
+.day b{display:block}
+.day small{color:var(--mut)}
+.day.done b{text-decoration:line-through;color:var(--mut)}
+.row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-top:1.4rem}
+[hidden]{display:none!important}
+footer{margin-top:2.5rem;color:var(--mut);font-size:.9rem}
+</style>
+</head>
+<body>
+<main>
+<section id="intro">
+<h1>30 jours pour apprendre à vendre en ligne.</h1>
+<p class="lead">Réponds à sept questions. Ton coach analyse tes réponses et te prépare un programme jour par jour, adapté à ton budget, ton temps et ton objectif.</p>
+<div id="qs"></div>
+<button class="main" id="go" type="button">Créer mon programme</button>
+<p class="err" id="err" role="alert"></p>
+</section>
+
+<section id="out" hidden>
+<h2>Ton programme sur mesure</h2>
+<div id="notes"></div>
+<p id="prog" style="margin:1.2rem 0 0;font-weight:700"></p>
+<div class="bar"><i id="fill"></i></div>
+<div id="weeks"></div>
+<div class="row"><button class="alt" id="redo" type="button">Refaire le questionnaire</button></div>
+</section>
+
+<footer>Ce programme est un outil d’entraînement : il ne garantit aucun gain. Si tu as moins de 18 ans, un adulte doit t’accompagner pour tout compte en ligne, toute vente et tout paiement. Rien de ce que tu réponds n’est envoyé ni enregistré ailleurs que sur ton appareil.</footer>
+</main>
+
+<script>
+var Q=[
+{k:"age",t:"Quel âge as-tu ?",o:["Moins de 18 ans","18 à 25 ans","26 à 40 ans","Plus de 40 ans"]},
+{k:"niv",t:"Quel est ton niveau en e-commerce ?",o:["Débutant complet","J’ai déjà vendu quelques produits","J’ai une boutique qui tourne"]},
+{k:"biz",t:"Dans quel type de business veux-tu te lancer ?",o:["Revente d’occasion","Produits faits maison","Produits numériques","Vêtements","Dropshipping"]},
+{k:"obj",t:"Quelle somme veux-tu atteindre en un mois ?",o:["Moins de 100 €","100 à 500 €","500 à 1 000 €","Plus de 1 000 €"]},
+{k:"bud",t:"Quel budget peux-tu investir au départ ?",o:["0 €","Moins de 50 €","50 à 200 €","Plus de 200 €"]},
+{k:"tps",t:"Combien de temps par jour peux-tu y consacrer ?",o:["30 minutes","1 heure","2 heures","Plus de 2 heures"]},
+{k:"blo",t:"Quel est ton plus gros blocage ?",o:["Je ne sais pas par où commencer","Je n’ai pas d’idée de produit","Je n’ai pas de budget","Je manque de confiance","Je ne sais pas faire de marketing"]}
+];
+var BIZ=[
+{w:"Vinted ou Leboncoin",p:"des objets que tu possèdes déjà et que tu n’utilises plus"},
+{w:"Etsy, Instagram ou un marché local",p:"des créations faites main"},
+{w:"Etsy ou une plateforme de produits numériques",p:"des modèles, fiches ou guides à télécharger"},
+{w:"Vinted ou une boutique en ligne",p:"des vêtements en bon état ou une petite collection"},
+{w:"une boutique en ligne",p:"un produit acheté chez un fournisseur et expédié à ton client"}
+];
+var MIN=[30,60,120,150];
+var BLO=[
+"Tu ne sais pas par où commencer : suis les jours dans l’ordre, un seul à la fois, c’est fait pour ça.",
+"Tu n’as pas d’idée de produit : les jours 2 à 4 sont là pour en trouver une à partir de ce qui se vend déjà.",
+"Tu n’as pas de budget : commence avec ce que tu possèdes déjà, tu n’as rien à acheter pour apprendre.",
+"Tu manques de confiance : chaque jour a une petite mission. Coche-la, et tu verras ta progression grandir.",
+"Tu ne sais pas faire de marketing : la semaine 3 t’apprend l’essentiel, sans jargon, avec des actions simples."
+];
+var KEY="ec30:done",A={};
+function $(i){return document.getElementById(i)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+function renderQs(){
+  $("qs").innerHTML=Q.map(function(q){
+    return '<fieldset class="q"><legend>'+q.t+'</legend><div class="opts">'+q.o.map(function(o,i){
+      return '<label><input type="radio" name="'+q.k+'" value="'+i+'"><span>'+o+'</span></label>';
+    }).join("")+'</div></fieldset>';
+  }).join("");
+}
+
+function days(b){
+  var w=b.w,p=b.p;
+  return [
+  ["Comprendre le modèle","Cherche comment fonctionne ce type de vente et note en trois phrases comment tu gagnerais de l’argent."],
+  ["Étudier le marché","Repère dix articles proches de "+p+" déjà vendus sur "+w+", avec leur prix."],
+  ["Définir ton client idéal","Écris qui il est, ce qu’il cherche, et ce qui l’empêche d’acheter."],
+  ["Choisir ton produit test","Choisis UN seul produit à tester et écris pourquoi il peut plaire."],
+  ["Analyser trois concurrents","Compare leurs prix, leurs photos et leurs avis. Note ce qu’ils font bien."],
+  ["Fixer ton prix","Calcule ta marge : prix de vente moins tous tes coûts, livraison comprise."],
+  ["Bilan de la semaine 1","Relis tes notes, ajuste ton choix si besoin et prépare la semaine suivante."],
+  ["Soigner tes photos","Prends cinq photos nettes, en lumière naturelle, sur un fond simple."],
+  ["Écrire ta description","Dis ce que c’est, l’état ou la taille, et pourquoi quelqu’un l’achèterait."],
+  ["Choisir où vendre","Compare les conditions de "+w+". L’ouverture du compte se fait avec un adulte si tu as moins de 18 ans."],
+  ["Préparer la livraison","Choisis l’emballage, pèse le colis et trouve le tarif d’envoi le moins cher."],
+  ["Publier ta première annonce","Mets en ligne ton produit avec tes photos, ta description et ton prix."],
+  ["Relire et corriger","Demande l’avis de deux personnes et corrige ce qui n’est pas clair."],
+  ["Bilan de la semaine 2","Note ce qui a été facile ou difficile et ce que tu changes."],
+  ["Écrire ta promesse","Résume en une phrase pourquoi ton produit est un bon choix pour ton client."],
+  ["Créer du contenu simple","Prépare trois contenus : photo, courte vidéo ou texte. Pour publier sur un réseau social, demande l’accord d’un adulte."],
+  ["Préparer tes réponses","Écris les trois questions qu’on te posera le plus souvent, avec tes réponses."],
+  ["Tester une autre annonce","Change le titre ou la photo principale et compare les résultats."],
+  ["Demander des retours","Interroge ceux qui ont regardé sans acheter : qu’est-ce qui les a freinés ?"],
+  ["Analyser tes résultats","Compte les vues, les messages et les ventes. Qu’est-ce qui marche le mieux ?"],
+  ["Bilan de la semaine 3","Garde ce qui marche, abandonne ce qui ne marche pas."],
+  ["Améliorer ton offre","Applique les retours reçus : prix, photos, texte ou livraison."],
+  ["Suivre tes chiffres","Fais un tableau simple : ventes, coûts, bénéfice."],
+  ["Soigner ton premier client","Écris un message de remerciement et soigne l’emballage."],
+  ["Tester un deuxième produit","Reprends la méthode des jours 4 à 12, en plus rapide."],
+  ["Gagner du temps","Prépare des modèles de messages et une liste de contrôle pour l’envoi."],
+  ["Préparer le mois suivant","Fixe ce que tu veux améliorer et ce que tu veux essayer."],
+  ["Revoir erreurs et réussites","Note trois réussites et trois erreurs, avec ce que tu en retiens."],
+  ["Fixer un nouvel objectif","Choisis un objectif réaliste pour le mois prochain, en partant de tes vrais chiffres."],
+  ["Bilan final","Relis tout ton parcours. Tu as maintenant une méthode à refaire et à améliorer."]
+  ];
+}
+
+function getDone(){try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return[]}}
+function setDone(d){try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
+
+function notes(a){
+  var n=[];
+  if(a.age==0)n.push(["Un adulte doit t’accompagner","Pour ouvrir un compte, vendre et encaisser de l’argent, il faut l’accord d’un parent ou tuteur. Parles-en dès le jour 1."]);
+  if(a.obj>=2&&a.bud<=1)n.push(["Objectif ambitieux","Viser "+Q[3].o[a.obj]+" en un mois avec un budget très limité est difficile. Vise d’abord ta première vente, puis augmente."]);
+  if(a.biz==4&&(a.age==0||a.bud==0))n.push(["À propos du dropshipping","Le dropshipping demande en général un budget et des démarches adultes. Avec peu de moyens, la revente d’occasion est un meilleur départ."]);
+  if(a.niv==2)n.push(["Tu as déjà de l’expérience","Si tu maîtrises déjà les jours 1 à 7, passe-les vite et consacre ton temps aux semaines 3 et 4."]);
+  n.push(["Ton principal blocage",BLO[a.blo]]);
+  return n.map(function(x){return '<div class="note"><b>'+x[0]+'</b>'+x[1]+'</div>'}).join("");
+}
+
+function build(a){
+  var d=days(BIZ[a.biz]),done=getDone(),min=MIN[a.tps],names=["Semaine 1 : les fondations","Semaine 2 : préparer ton offre","Semaine 3 : trouver tes premiers clients","Semaine 4 : progresser et grandir"],h="";
+  $("notes").innerHTML=notes(a);
+  for(var s=0;s<4;s++){
+    var from=s*7,to=s==3?30:from+7;
+    h+='<details'+(s==0?' open':'')+'><summary>'+names[s]+'</summary>';
+    for(var i=from;i<to;i++){
+      h+='<label class="day'+(done.indexOf(i+1)>-1?' done':'')+'"><input type="checkbox" data-d="'+(i+1)+'"'+(done.indexOf(i+1)>-1?' checked':'')+'><span><b>Jour '+(i+1)+' : '+esc(d[i][0])+'</b>'+esc(d[i][1])+' <small>(environ '+min+' min)</small></span></label>';
+    }
+    h+='</details>';
+  }
+  $("weeks").innerHTML=h;
+  progress();
+}
+
+function progress(){
+  var c=getDone().length;
+  $("prog").textContent=c+" jour"+(c>1?"s":"")+" validé"+(c>1?"s":"")+" sur 30";
+  $("fill").style.width=(c/30*100)+"%";
+}
+
+$("go").onclick=function(){
+  var a={},miss=0;
+  Q.forEach(function(q){
+    var r=document.querySelector('input[name="'+q.k+'"]:checked');
+    if(r)a[q.k]=+r.value;else miss++;
+  });
+  if(miss){$("err").textContent="Il reste "+miss+" question"+(miss>1?"s":"")+" sans réponse.";return}
+  $("err").textContent="";A=a;
+  build(a);
+  $("intro").hidden=true;$("out").hidden=false;window.scrollTo(0,0);
+};
+$("redo").onclick=function(){$("out").hidden=true;$("intro").hidden=false;window.scrollTo(0,0)};
+$("weeks").addEventListener("change",function(e){
+  var n=+e.target.getAttribute("data-d");if(!n)return;
+  var d=getDone(),i=d.indexOf(n);
+  if(e.target.checked&&i<0)d.push(n);
+  if(!e.target.checked&&i>-1)d.splice(i,1);
+  setDone(d);
+  e.target.closest(".day").classList.toggle("done",e.target.checked);
+  progress();
+});
+renderQs();
+</script>
+</body>
+</html>
