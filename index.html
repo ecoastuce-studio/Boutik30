@@ -3,22 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Coach e-commerce : ton programme de 30 jours</title>
+<title>Boutik30 : ton programme de 30 jours</title>
+<meta name="description" content="Un coach gratuit qui crée ton programme de 30 jours pour apprendre à vendre en ligne.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#FBF8FF;--ink:#26143F;--mut:#6B5F82;--card:#fff;--line:#E3D9F2;--acc:#C92F66;--accink:#fff;--soft:#EFE6FF;--ok:#1E8E6A;color-scheme:light;
+:root{--bg:#FBF8FF;--ink:#26143F;--mut:#6B5F82;--card:#fff;--line:#E3D9F2;--acc:#C92F66;--accink:#fff;--soft:#EFE6FF;--ok:#1E8E6A;--h1:#C92F66;--h2:#6A35C9;color-scheme:light;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17102A;--ink:#F3ECFF;--mut:#B2A5CC;--card:#221840;--line:#3A2D5C;--acc:#FF7BA6;--accink:#1B0D2E;--soft:#2D2150;--ok:#5FD6AE;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#17102A;--ink:#F3ECFF;--mut:#B2A5CC;--card:#221840;--line:#3A2D5C;--acc:#FF7BA6;--accink:#1B0D2E;--soft:#2D2150;--ok:#5FD6AE;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17102A;--ink:#F3ECFF;--mut:#B2A5CC;--card:#221840;--line:#3A2D5C;--acc:#FF7BA6;--accink:#1B0D2E;--soft:#2D2150;--ok:#5FD6AE;--h1:#8A2B55;--h2:#4B2B9A;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17102A;--ink:#F3ECFF;--mut:#B2A5CC;--card:#221840;--line:#3A2D5C;--acc:#FF7BA6;--accink:#1B0D2E;--soft:#2D2150;--ok:#5FD6AE;--h1:#8A2B55;--h2:#4B2B9A;color-scheme:dark}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 "DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
 main{max-width:46rem;margin:0 auto;padding:2.5rem 1.25rem 4rem}
 h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;line-height:1.1;margin:0}
 h1{font-weight:800;font-size:clamp(2.6rem,9vw,4.6rem);letter-spacing:-.02em}
-h2{font-weight:800;font-size:1.7rem;margin-bottom:.75rem}
+h2{font-weight:800}
 h3{font-weight:600;font-size:1.15rem}
 .lead{color:var(--mut);max-width:34rem;margin:1.1rem 0 2rem}
 .q{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:1.1rem 1.2rem 1.2rem;margin:0 0 1rem}
@@ -28,21 +29,38 @@ h3{font-weight:600;font-size:1.15rem}
 .opts input{position:absolute;opacity:0;pointer-events:none}
 .opts span{display:inline-block;padding:.5rem .9rem;border:1.5px solid var(--line);border-radius:999px;background:var(--bg)}
 .opts input:checked+span{background:var(--acc);border-color:var(--acc);color:var(--accink);font-weight:700}
-.opts input:focus-visible+span,button:focus-visible,summary:focus-visible,.day input:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.opts input:focus-visible+span,button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 button.main{font:700 1.05rem "DM Sans",system-ui,sans-serif;background:var(--acc);color:var(--accink);border:0;border-radius:12px;padding:.9rem 1.5rem;cursor:pointer}
 button.alt{font:500 .95rem "DM Sans",system-ui,sans-serif;background:none;color:var(--ink);border:1.5px solid var(--line);border-radius:10px;padding:.5rem .9rem;cursor:pointer}
 .err{color:var(--acc);font-weight:700;margin:.75rem 0 0;min-height:1.5em}
-.note{background:var(--soft);border-radius:12px;padding:.9rem 1.1rem;margin:0 0 .8rem}
+
+.hero{display:flex;gap:1.2rem;align-items:center;justify-content:space-between;flex-wrap:wrap;background:linear-gradient(135deg,var(--h1),var(--h2));color:#fff;border-radius:22px;padding:1.6rem;margin-bottom:1rem}
+.hero h2{font-size:clamp(1.9rem,6vw,2.7rem);margin:0 0 .9rem;max-width:21rem}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chips span{background:rgba(255,255,255,.2);border-radius:999px;padding:.25rem .75rem;font-size:.9rem}
+.ring{position:relative;width:104px;height:104px;flex:none}
+.ring svg{transform:rotate(-90deg);display:block}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font:800 1.5rem "Bricolage Grotesque",system-ui,sans-serif}
+.next{background:var(--card);border:2px solid var(--acc);border-radius:18px;padding:1.2rem 1.3rem;margin-bottom:1rem}
+.next small{color:var(--acc);font-weight:700}
+.next h3{font-size:1.55rem;margin:.2rem 0 .4rem}
+.next p{margin:0 0 .9rem}
+.note{background:var(--soft);border-radius:12px;padding:.9rem 1.1rem;margin:0 0 .7rem}
 .note b{display:block}
-.bar{height:10px;border-radius:99px;background:var(--soft);overflow:hidden;margin:.6rem 0 1.6rem}
-.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
-details{border:1px solid var(--line);background:var(--card);border-radius:14px;margin:0 0 .8rem;padding:.2rem 1.1rem}
-summary{cursor:pointer;padding:.8rem 0;font:600 1.15rem "Bricolage Grotesque","DM Sans",system-ui,sans-serif}
-.day{display:flex;gap:.8rem;padding:.7rem 0;border-top:1px solid var(--line)}
-.day input{width:1.35rem;height:1.35rem;margin-top:.2rem;accent-color:var(--acc);flex:none}
-.day b{display:block}
-.day small{color:var(--mut)}
-.day.done b{text-decoration:line-through;color:var(--mut)}
+.tabs{display:flex;gap:.4rem;overflow-x:auto;margin:1.5rem 0 .6rem;padding-bottom:.3rem}
+.tabs button{flex:none;font:500 .98rem "DM Sans",system-ui,sans-serif;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:.5rem 1rem;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:700}
+.wk{color:var(--mut);margin:0 0 .8rem}
+.grid{display:grid;gap:.7rem}
+.card{display:grid;grid-template-columns:auto 1fr auto;gap:.9rem;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem}
+.num{font:800 1.9rem/1 "Bricolage Grotesque",system-ui,sans-serif;color:var(--acc);min-width:2.2rem}
+.card h3{font-size:1.1rem;margin-bottom:.25rem}
+.card p{margin:0;color:var(--mut);font-size:.98rem}
+.card small{color:var(--mut)}
+.card.done{opacity:.65}
+.card.done h3{text-decoration:line-through}
+.chk{width:2.4rem;height:2.4rem;border-radius:50%;border:2px solid var(--line);background:none;color:transparent;font-size:1.2rem;cursor:pointer}
+.chk[aria-pressed="true"]{background:var(--ok);border-color:var(--ok);color:var(--bg)}
 .row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-top:1.4rem}
 [hidden]{display:none!important}
 footer{margin-top:2.5rem;color:var(--mut);font-size:.9rem}
@@ -59,11 +77,15 @@ footer{margin-top:2.5rem;color:var(--mut);font-size:.9rem}
 </section>
 
 <section id="out" hidden>
-<h2>Ton programme sur mesure</h2>
+<div class="hero">
+<div><h2>Ton programme de 30 jours est prêt</h2><div class="chips" id="chips"></div></div>
+<div class="ring" id="ring"></div>
+</div>
+<div id="next"></div>
 <div id="notes"></div>
-<p id="prog" style="margin:1.2rem 0 0;font-weight:700"></p>
-<div class="bar"><i id="fill"></i></div>
-<div id="weeks"></div>
+<div class="tabs" id="tabs" role="tablist"></div>
+<p class="wk" id="wk"></p>
+<div class="grid" id="grid"></div>
 <div class="row"><button class="alt" id="redo" type="button">Refaire le questionnaire</button></div>
 </section>
 
@@ -88,14 +110,16 @@ var BIZ=[
 {w:"une boutique en ligne",p:"un produit acheté chez un fournisseur et expédié à ton client"}
 ];
 var MIN=[30,60,120,150];
+var WEEKS=["Semaine 1","Semaine 2","Semaine 3","Semaine 4"];
+var WNAMES=["Les fondations","Préparer ton offre","Trouver tes premiers clients","Progresser et grandir"];
 var BLO=[
 "Tu ne sais pas par où commencer : suis les jours dans l’ordre, un seul à la fois, c’est fait pour ça.",
 "Tu n’as pas d’idée de produit : les jours 2 à 4 sont là pour en trouver une à partir de ce qui se vend déjà.",
 "Tu n’as pas de budget : commence avec ce que tu possèdes déjà, tu n’as rien à acheter pour apprendre.",
-"Tu manques de confiance : chaque jour a une petite mission. Coche-la, et tu verras ta progression grandir.",
+"Tu manques de confiance : chaque jour a une petite mission. Valide-la, et tu verras ta progression grandir.",
 "Tu ne sais pas faire de marketing : la semaine 3 t’apprend l’essentiel, sans jargon, avec des actions simples."
 ];
-var KEY="ec30:done",A={};
+var KEY="ec30:done",A={},W=0;
 function $(i){return document.getElementById(i)}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 
@@ -145,6 +169,7 @@ function days(b){
 
 function getDone(){try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return[]}}
 function setDone(d){try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
+function weekOf(i){return Math.min(3,Math.floor(i/7))}
 
 function notes(a){
   var n=[];
@@ -156,25 +181,20 @@ function notes(a){
   return n.map(function(x){return '<div class="note"><b>'+x[0]+'</b>'+x[1]+'</div>'}).join("");
 }
 
-function build(a){
-  var d=days(BIZ[a.biz]),done=getDone(),min=MIN[a.tps],names=["Semaine 1 : les fondations","Semaine 2 : préparer ton offre","Semaine 3 : trouver tes premiers clients","Semaine 4 : progresser et grandir"],h="";
-  $("notes").innerHTML=notes(a);
-  for(var s=0;s<4;s++){
-    var from=s*7,to=s==3?30:from+7;
-    h+='<details'+(s==0?' open':'')+'><summary>'+names[s]+'</summary>';
-    for(var i=from;i<to;i++){
-      h+='<label class="day'+(done.indexOf(i+1)>-1?' done':'')+'"><input type="checkbox" data-d="'+(i+1)+'"'+(done.indexOf(i+1)>-1?' checked':'')+'><span><b>Jour '+(i+1)+' : '+esc(d[i][0])+'</b>'+esc(d[i][1])+' <small>(environ '+min+' min)</small></span></label>';
-    }
-    h+='</details>';
+function render(){
+  var a=A,d=days(BIZ[a.biz]),done=getDone(),c=done.length,min=MIN[a.tps],nx=0,i;
+  $("chips").innerHTML=[Q[2].o[a.biz],"Environ "+min+" min par jour",Q[3].o[a.obj]+" visés","Budget : "+Q[4].o[a.bud]].map(function(t){return "<span>"+t+"</span>"}).join("");
+  $("ring").innerHTML='<svg width="104" height="104" viewBox="0 0 104 104"><circle cx="52" cy="52" r="42" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="10"/><circle cx="52" cy="52" r="42" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-dasharray="263.9" stroke-dashoffset="'+(263.9*(1-c/30))+'"/></svg><b>'+c+'/30</b>';
+  for(i=1;i<=30;i++){if(done.indexOf(i)<0){nx=i;break}}
+  $("next").innerHTML=nx?'<div class="next"><small>Ta mission du jour</small><h3>Jour '+nx+' : '+esc(d[nx-1][0])+'</h3><p>'+esc(d[nx-1][1])+'</p><button class="main" type="button" data-d="'+nx+'">Mission accomplie</button></div>':'<div class="next"><h3>Bravo, tu as terminé les 30 jours !</h3><p>Tu as maintenant une méthode complète. Refais le questionnaire pour tester un autre produit.</p></div>';
+  $("tabs").innerHTML=WEEKS.map(function(w,k){return '<button type="button" role="tab" data-w="'+k+'" aria-selected="'+(k==W)+'">'+w+'</button>'}).join("");
+  $("wk").textContent=WEEKS[W]+" : "+WNAMES[W];
+  var from=W*7,to=W==3?30:from+7,h="";
+  for(i=from;i<to;i++){
+    var ok=done.indexOf(i+1)>-1;
+    h+='<article class="card'+(ok?' done':'')+'"><span class="num">'+(i+1)+'</span><div><h3>'+esc(d[i][0])+'</h3><p>'+esc(d[i][1])+'</p><small>Environ '+min+' min</small></div><button class="chk" type="button" data-d="'+(i+1)+'" aria-pressed="'+ok+'" aria-label="Valider le jour '+(i+1)+'">✓</button></article>';
   }
-  $("weeks").innerHTML=h;
-  progress();
-}
-
-function progress(){
-  var c=getDone().length;
-  $("prog").textContent=c+" jour"+(c>1?"s":"")+" validé"+(c>1?"s":"")+" sur 30";
-  $("fill").style.width=(c/30*100)+"%";
+  $("grid").innerHTML=h;
 }
 
 $("go").onclick=function(){
@@ -185,18 +205,21 @@ $("go").onclick=function(){
   });
   if(miss){$("err").textContent="Il reste "+miss+" question"+(miss>1?"s":"")+" sans réponse.";return}
   $("err").textContent="";A=a;
-  build(a);
+  $("notes").innerHTML=notes(a);
+  var done=getDone(),n=0;
+  for(var i=1;i<=30;i++){if(done.indexOf(i)<0){n=i;break}}
+  W=n?weekOf(n-1):3;
+  render();
   $("intro").hidden=true;$("out").hidden=false;window.scrollTo(0,0);
 };
 $("redo").onclick=function(){$("out").hidden=true;$("intro").hidden=false;window.scrollTo(0,0)};
-$("weeks").addEventListener("change",function(e){
-  var n=+e.target.getAttribute("data-d");if(!n)return;
-  var d=getDone(),i=d.indexOf(n);
-  if(e.target.checked&&i<0)d.push(n);
-  if(!e.target.checked&&i>-1)d.splice(i,1);
-  setDone(d);
-  e.target.closest(".day").classList.toggle("done",e.target.checked);
-  progress();
+document.addEventListener("click",function(e){
+  var b=e.target.closest("[data-d]"),t=e.target.closest("[data-w]");
+  if(t){W=+t.getAttribute("data-w");render();return}
+  if(!b)return;
+  var n=+b.getAttribute("data-d"),d=getDone(),i=d.indexOf(n);
+  if(i>-1)d.splice(i,1);else d.push(n);
+  setDone(d);render();
 });
 renderQs();
 </script>
