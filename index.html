@@ -187,7 +187,7 @@ function notes(a){
   if(a.obj>=2&&a.bud<=1)n.push(["Objectif ambitieux","Viser "+Q[3].o[a.obj]+" en un mois avec un budget très limité est difficile. Vise d’abord ta première vente, puis augmente."]);
   if(a.biz==4&&(a.age==0||a.bud==0))n.push(["À propos du dropshipping","Le dropshipping demande en général un budget et des démarches adultes. Avec peu de moyens, la revente d’occasion est un meilleur départ."]);
   if(a.niv==2)n.push(["Tu as déjà de l’expérience","Si tu maîtrises déjà les jours 1 à 7, passe-les vite et consacre ton temps aux semaines 3 et 4."]);
-  n.push(["Ton principal blocage",BLO[a.blo]]);
+  if(a.blo>=0)n.push(["Ton principal blocage",BLO[a.blo]]);else n.push(["Ton principal blocage","Tu n’as pas indiqué de blocage particulier. Tu pourras l’ajuster au fil du programme."]);
   return n.map(function(x){return '<div class="note"><b>'+x[0]+'</b>'+x[1]+'</div>'}).join("");
 }
 
@@ -221,10 +221,10 @@ function collectStep(){
   var st=STEPS[STEP],miss=0;
   Q.slice(st.from,st.to).forEach(function(q){
     var r=document.querySelector('input[name="'+q.k+'"]:checked');
-    if(r)A[q.k]=+r.value;else miss++;
+    if(r)A[q.k]=+r.value;else if(!(STEP===3&&q.k==="blo"))miss++;
   });
   if(miss){$("err").textContent="Réponds aux "+miss+" question"+(miss>1?"s":"")+" de cette étape pour continuer.";return false}
-  if(STEP===3){var p=$("project-desc");PROJECT=p?p.value.trim():"";}
+  if(STEP===3){if(typeof A.blo==="undefined")A.blo=-1;var p=$("project-desc");PROJECT=p?p.value.trim():"";}
   $("err").textContent="";
   return true;
 }
