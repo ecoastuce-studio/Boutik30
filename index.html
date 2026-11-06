@@ -69,10 +69,12 @@ footer{margin-top:2.5rem;color:var(--mut);font-size:.9rem}
 <body>
 <main>
 <section id="intro">
-<h1>30 jours pour apprendre à vendre en ligne.</h1>
-<p class="lead">Réponds à sept questions. Ton coach analyse tes réponses et te prépare un programme jour par jour, adapté à ton budget, ton temps et ton objectif.</p>
+<span class="intro-tag">✦ TON COACH DE PROJET EN 30 JOURS</span>
+<h1>Transforme ton idée en un plan clair.</h1>
+<p class="lead">Réponds à quelques questions sur ton niveau, tes moyens et tes envies. Boutik30 construit ensuite un parcours progressif, avec des missions adaptées à ta situation.</p>
+<div class="progress-wrap"><div class="progress-meta"><span id="step-label">Étape 1 sur 4</span><span id="step-percent">25 %</span></div><div class="progress"><span id="progress-fill"></span></div></div>
 <div id="qs"></div>
-<button class="main" id="go" type="button">Créer mon programme</button>
+<div class="wizard-nav"><button class="alt" id="prev" type="button" disabled>← Précédent</button><button class="main" id="next-step" type="button">Continuer →</button><button class="main" id="go" type="button" hidden>Créer mon programme ↗</button></div>
 <p class="err" id="err" role="alert"></p>
 </section>
 
@@ -119,7 +121,8 @@ var BLO=[
 "Tu manques de confiance : chaque jour a une petite mission. Valide-la, et tu verras ta progression grandir.",
 "Tu ne sais pas faire de marketing : la semaine 3 t’apprend l’essentiel, sans jargon, avec des actions simples."
 ];
-var KEY="ec30:done",A={},W=0,STEP=0,PROJECT="";\nvar STEPS=[{name:"Ton profil",from:0,to:2},{name:"Ton projet",from:2,to:4},{name:"Tes moyens",from:4,to:6},{name:"Ton objectif",from:6,to:7}];
+var KEY="ec30:done",A={},W=0,STEP=0,PROJECT="";
+var STEPS=[{name:"Ton profil",from:0,to:2},{name:"Ton projet",from:2,to:4},{name:"Tes moyens",from:4,to:6},{name:"Ton objectif",from:6,to:7}];
 function $(i){return document.getElementById(i)}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 
