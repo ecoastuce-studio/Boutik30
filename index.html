@@ -191,6 +191,16 @@ function notes(a){
   return n.map(function(x){return '<div class="note"><b>'+x[0]+'</b>'+x[1]+'</div>'}).join("");
 }
 
+function fitAnalysis(a){
+  var score=0,notes=[];
+  if(a.bud===0){score-=1;notes.push("Tu pars sans budget : privilégie l’apprentissage et les tests gratuits, sans achat ni abonnement.");}
+  if(a.obj>=2&&a.bud<=1){score-=2;notes.push("Ton objectif mensuel est élevé par rapport au budget annoncé : il vaut mieux le considérer comme une ambition à long terme, pas comme une prévision.");}
+  if(a.tps>=2){score+=1;notes.push("Tu disposes d’un peu plus de temps chaque jour, ce qui facilite les recherches et les exercices.");}
+  if(a.niv===2){score+=1;notes.push("Ton expérience peut t’aider à avancer plus vite sur les bases.");}
+  if(a.blo===0||a.blo===1){notes.push("Le parcours commence par clarifier ton idée et vérifier le besoin avant de passer à la suite.");}
+  var label=score<=-2?"À construire progressivement":score<=0?"Projet à tester prudemment":"Base encourageante pour apprendre";
+  return '<div class="insight"><strong>Analyse de départ : '+label+'</strong>'+notes.map(function(x){return '<p>'+esc(x)+'</p>';}).join("")+'<p>Cette estimation sert à organiser ton apprentissage. Elle ne prédit ni chiffre d’affaires ni réussite commerciale.</p></div>';
+}
 function render(){
   var a=A,d=days(BIZ[a.biz]),done=getDone(),c=done.length,min=MIN[a.tps],nx=0,i;
   $("chips").innerHTML=[Q[2].o[a.biz],"Environ "+min+" min par jour",Q[3].o[a.obj]+" visés","Budget : "+Q[4].o[a.bud]].map(function(t){return "<span>"+t+"</span>"}).join("");
@@ -222,7 +232,7 @@ $("next-step").onclick=function(){if(!collectStep())return;STEP=Math.min(3,STEP+
 $("prev").onclick=function(){STEP=Math.max(0,STEP-1);$("err").textContent="";renderQs();window.scrollTo(0,0)};
 $("go").onclick=function(){
   if(!collectStep())return;
-  $("notes").innerHTML=notes(A)+(PROJECT?'<div class="insight"><strong>Ton idée à garder en tête</strong>'+esc(PROJECT)+'</div>':'');
+  $("notes").innerHTML=fitAnalysis(A)+notes(A)+(PROJECT?'<div class="insight"><strong>Ton idée à garder en tête</strong>'+esc(PROJECT)+'</div>':'');
   var done=getDone(),n=0;
   for(var i=1;i<=30;i++){if(done.indexOf(i)<0){n=i;break}}
   W=n?weekOf(n-1):3;
