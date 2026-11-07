@@ -2,12 +2,12 @@
 const q=s=>document.querySelector(s), esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 let saved=JSON.parse(localStorage.getItem("sr_projects")||"[]");
 const data=[
-{name:"Assistant de devis pour indépendants",type:"IA appliquée",problem:"Les indépendants perdent du temps à rédiger leurs devis.",audience:"Freelances et petites entreprises",score:82},
-{name:"Veille simplifiée pour petites entreprises",type:"SaaS B2B",problem:"Les petites structures ont du mal à suivre les changements utiles.",audience:"TPE d'un secteur précis",score:76},
-{name:"Organisateur de révisions",type:"Éducation",problem:"Les élèves ont du mal à planifier leurs révisions.",audience:"Élèves et familles",score:74},
-{name:"Gestion des demandes associatives",type:"SaaS B2B",problem:"Les associations dispersent inscriptions et documents.",audience:"Associations locales",score:71},
-{name:"Créateur de fiches produits",type:"IA appliquée",problem:"Les petites boutiques ont du mal à produire des descriptions cohérentes.",audience:"Petits e-commerçants",score:68},
-{name:"Suivi des dépenses de projets",type:"Productivité",problem:"Les groupes perdent le suivi des dépenses partagées.",audience:"Associations et groupes",score:65}
+{name:"Assistant de devis pour indépendants",type:"IA appliquée",problem:"Les indépendants perdent du temps à rédiger leurs devis.",audience:"Freelances et petites entreprises"},
+{name:"Veille simplifiée pour petites entreprises",type:"SaaS B2B",problem:"Les petites structures ont du mal à suivre les changements utiles.",audience:"TPE d'un secteur précis"},
+{name:"Organisateur de révisions",type:"Éducation",problem:"Les élèves ont du mal à planifier leurs révisions.",audience:"Élèves et familles"},
+{name:"Gestion des demandes associatives",type:"SaaS B2B",problem:"Les associations dispersent inscriptions et documents.",audience:"Associations locales"},
+{name:"Créateur de fiches produits",type:"IA appliquée",problem:"Les petites boutiques ont du mal à produire des descriptions cohérentes.",audience:"Petits e-commerçants"},
+{name:"Suivi des dépenses de projets",type:"Productivité",problem:"Les groupes perdent le suivi des dépenses partagées.",audience:"Associations et groupes"}
 ];
 const root=document.createElement("section");root.id="radar-suite";root.className="wrap section";
 root.innerHTML="<style>#radar-suite .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}#radar-suite button{border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:#ffffff08;color:var(--text);font-weight:700;font-size:12px}#radar-suite .tab[aria-selected=true]{border-color:var(--green);color:var(--green)}#radar-suite .view{display:none}#radar-suite .view.active{display:block}#radar-suite .grid,#radar-suite .two{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}#radar-suite .two{grid-template-columns:1fr 1fr}#radar-suite .card{background:linear-gradient(145deg,#102238,#0b1929);border:1px solid var(--line);border-radius:16px;padding:16px}#radar-suite .muted{color:var(--muted);font-size:12px}#radar-suite .score{font-size:26px;color:var(--green);font-weight:850}#radar-suite input,#radar-suite textarea,#radar-suite select{width:100%;background:#081522;border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--text);margin:5px 0 12px}#radar-suite .primary{background:var(--green);color:#062019}#radar-suite .note{padding:12px;border:1px solid #6c5a2b;background:#d8a83b12;color:#e7d4a2;border-radius:12px;font-size:11px;margin-top:14px}@media(max-width:650px){#radar-suite .grid,#radar-suite .two{grid-template-columns:1fr}}</style>"+
