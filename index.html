@@ -61,4 +61,5 @@ document.getElementById('restart').addEventListener('click',()=>{step=0;Object.a
 document.getElementById('save').addEventListener('click',()=>{const report={answers:data,completed:[...document.querySelectorAll('[data-task]:checked')].map(x=>x.dataset.task),savedAt:new Date().toISOString()};localStorage.setItem('saasRadarReport',JSON.stringify(report));const blob=new Blob([JSON.stringify(report,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mon-rapport-saas-radar.json';a.click();URL.revokeObjectURL(a.href);document.getElementById('save').textContent='Rapport sauvegardé ✓'});
 render();
 </script>
+<script src="radar.js"></script>
 </body></html>
