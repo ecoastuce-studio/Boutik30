@@ -2,256 +2,55 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Boutik30 : ton programme de 30 jours</title>
-<meta name="description" content="Un coach gratuit qui crée ton programme de 30 jours pour apprendre à vendre en ligne.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07111f">
+<title>SaaS Radar — Trouve, teste et construis ton idée</title>
+<meta name="description" content="SaaS Radar t'aide à transformer une idée de business en projet concret grâce à une analyse guidée et un plan d'action gratuit.">
 <style>
-:root{--bg:#FBF8FF;--ink:#26143F;--mut:#6B5F82;--card:#fff;--line:#E3D9F2;--acc:#C92F66;--accink:#fff;--soft:#EFE6FF;--ok:#1E8E6A;--h1:#C92F66;--h2:#6A35C9;color-scheme:light;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17102A;--ink:#F3ECFF;--mut:#B2A5CC;--card:#221840;--line:#3A2D5C;--acc:#FF7BA6;--accink:#1B0D2E;--soft:#2D2150;--ok:#5FD6AE;--h1:#8A2B55;--h2:#4B2B9A;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#17102A;--ink:#F3ECFF;--mut:#B2A5CC;--card:#221840;--line:#3A2D5C;--acc:#FF7BA6;--accink:#1B0D2E;--soft:#2D2150;--ok:#5FD6AE;--h1:#8A2B55;--h2:#4B2B9A;color-scheme:dark}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 "DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
-main{max-width:48rem;margin:0 auto;padding:2.5rem 1.25rem 4rem}
-h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;line-height:1.1;margin:0}
-h1{font-weight:800;font-size:clamp(2.6rem,9vw,4.6rem);letter-spacing:-.02em}
-h2{font-weight:800}
-h3{font-weight:600;font-size:1.15rem}
-.lead{color:var(--mut);max-width:34rem;margin:1.1rem 0 2rem}
-.q{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:1.1rem 1.2rem 1.2rem;margin:0 0 1rem}
-.q legend{font-weight:700;padding:0 .4rem}
-.opts{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
-.opts label{cursor:pointer}
-.opts input{position:absolute;opacity:0;pointer-events:none}
-.opts span{display:inline-block;padding:.5rem .9rem;border:1.5px solid var(--line);border-radius:999px;background:var(--bg)}
-.opts input:checked+span{background:var(--acc);border-color:var(--acc);color:var(--accink);font-weight:700}
-.opts input:focus-visible+span,button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-button.main{font:700 1.05rem "DM Sans",system-ui,sans-serif;background:var(--acc);color:var(--accink);border:0;border-radius:12px;padding:.9rem 1.5rem;cursor:pointer}
-button.alt{font:500 .95rem "DM Sans",system-ui,sans-serif;background:none;color:var(--ink);border:1.5px solid var(--line);border-radius:10px;padding:.5rem .9rem;cursor:pointer}
-.err{color:var(--acc);font-weight:700;margin:.75rem 0 0;min-height:1.5em}.intro-tag{display:inline-flex;gap:.45rem;align-items:center;padding:.35rem .75rem;border-radius:999px;background:var(--soft);color:var(--acc);font-weight:700;font-size:.85rem;margin-bottom:1rem}.progress-wrap{margin:1.5rem 0 1rem}.progress-meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.88rem;margin-bottom:.45rem}.progress{height:8px;background:var(--line);border-radius:99px;overflow:hidden}.progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--h1),var(--h2));transition:width .2s}.wizard-nav{display:flex;justify-content:space-between;gap:.7rem;margin-top:1.2rem}.wizard-nav button:disabled{opacity:.35;cursor:not-allowed}.optional{display:block;margin:1rem 0;padding:1rem;background:var(--soft);border-radius:14px}.optional label{display:block;font-weight:700;margin-bottom:.5rem}.optional textarea{width:100%;min-height:105px;resize:vertical;border:1.5px solid var(--line);border-radius:10px;padding:.8rem;font:inherit;background:var(--card);color:var(--ink)}.optional small{color:var(--mut)}.insight{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.1rem;margin:0 0 .8rem}.insight strong{display:block;margin-bottom:.3rem;color:var(--acc)}
-
-.hero{display:flex;gap:1.2rem;align-items:center;justify-content:space-between;flex-wrap:wrap;background:linear-gradient(135deg,var(--h1),var(--h2));color:#fff;border-radius:22px;padding:1.6rem;margin-bottom:1rem}
-.hero h2{font-size:clamp(1.9rem,6vw,2.7rem);margin:0 0 .9rem;max-width:21rem}
-.chips{display:flex;flex-wrap:wrap;gap:.4rem}
-.chips span{background:rgba(255,255,255,.2);border-radius:999px;padding:.25rem .75rem;font-size:.9rem}
-.ring{position:relative;width:104px;height:104px;flex:none}
-.ring svg{transform:rotate(-90deg);display:block}
-.ring b{position:absolute;inset:0;display:grid;place-items:center;font:800 1.5rem "Bricolage Grotesque",system-ui,sans-serif}
-.next{background:var(--card);border:2px solid var(--acc);border-radius:18px;padding:1.2rem 1.3rem;margin-bottom:1rem}
-.next small{color:var(--acc);font-weight:700}
-.next h3{font-size:1.55rem;margin:.2rem 0 .4rem}
-.next p{margin:0 0 .9rem}
-.note{background:var(--soft);border-radius:12px;padding:.9rem 1.1rem;margin:0 0 .7rem}
-.note b{display:block}
-.tabs{display:flex;gap:.4rem;overflow-x:auto;margin:1.5rem 0 .6rem;padding-bottom:.3rem}
-.tabs button{flex:none;font:500 .98rem "DM Sans",system-ui,sans-serif;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:.5rem 1rem;cursor:pointer}
-.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:700}
-.wk{color:var(--mut);margin:0 0 .8rem}
-.grid{display:grid;gap:.7rem}
-.card{display:grid;grid-template-columns:auto 1fr auto;gap:.9rem;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem}
-.num{font:800 1.9rem/1 "Bricolage Grotesque",system-ui,sans-serif;color:var(--acc);min-width:2.2rem}
-.card h3{font-size:1.1rem;margin-bottom:.25rem}
-.card p{margin:0;color:var(--mut);font-size:.98rem}
-.card small{color:var(--mut)}
-.card.done{opacity:.65}
-.card.done h3{text-decoration:line-through}
-.chk{width:2.4rem;height:2.4rem;border-radius:50%;border:2px solid var(--line);background:none;color:transparent;font-size:1.2rem;cursor:pointer}
-.chk[aria-pressed="true"]{background:var(--ok);border-color:var(--ok);color:var(--bg)}
-.row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-top:1.4rem}
-[hidden]{display:none!important}
-footer{margin-top:2.5rem;color:var(--mut);font-size:.9rem}
+:root{--bg:#07111f;--panel:#0d1b2c;--panel2:#102238;--line:#20364d;--text:#edf5ff;--muted:#9eb0c5;--green:#7cf0bd;--blue:#80baff;--purple:#b8a2ff;--radius:20px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#173c4b 0,transparent 36%),var(--bg);color:var(--text);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.wrap{max-width:1160px;margin:auto;padding:0 24px}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12}.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:18px;letter-spacing:-.5px}.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--green),#45b8a1);display:grid;place-items:center;color:#062019;font-weight:900}.navlinks{display:flex;gap:25px;color:var(--muted);font-size:13px}.navlinks a{color:inherit;text-decoration:none}.navlinks a:hover{color:var(--green)}.navcta,.primary{border:0;border-radius:12px;background:var(--green);color:#062019;font-weight:800;padding:12px 17px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}.hero{padding:76px 0 48px;display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}.eyebrow{color:var(--green);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.7px}.hero h1{font-size:clamp(42px,6vw,68px);line-height:1.02;letter-spacing:-3px;margin:17px 0}.gradient{background:linear-gradient(90deg,var(--green),#9cc7ff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);font-size:17px;max-width:570px}.heroactions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.secondary{border:1px solid var(--line);background:#ffffff08;color:var(--text);border-radius:12px;padding:12px 17px;text-decoration:none;font-weight:700}.proof{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin-top:23px}.proof span:before{content:'✓';color:var(--green);margin-right:7px}.preview{background:linear-gradient(145deg,#10283a,#0b1728);border:1px solid #34516a;border-radius:24px;padding:20px;box-shadow:0 24px 80px #0006;transform:rotate(1deg)}.previewtop{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px}.live{color:var(--green)}.score{display:flex;align-items:center;gap:17px;margin:22px 0}.ring{width:92px;height:92px;border-radius:50%;background:conic-gradient(var(--green) 0 72%,#294052 72%);display:grid;place-items:center;position:relative}.ring:before{content:'';position:absolute;inset:8px;background:#102235;border-radius:50%}.ring b{position:relative;font-size:24px}.scoretext b{display:block;font-size:16px}.scoretext small{color:var(--muted)}.minirow{display:grid;grid-template-columns:1fr 1fr;gap:10px}.minicard{background:#ffffff08;border:1px solid #ffffff12;border-radius:14px;padding:13px}.minicard small{display:block;color:var(--muted);font-size:11px}.minicard b{font-size:18px}.bars{display:flex;align-items:end;gap:7px;height:65px;margin-top:16px}.bars i{flex:1;border-radius:5px 5px 0 0;background:linear-gradient(var(--green),#238b78);opacity:.85}.section{padding:58px 0}.sectionhead{max-width:660px;margin-bottom:25px}.sectionhead h2{font-size:32px;letter-spacing:-1px;margin:7px 0}.sectionhead p{color:var(--muted);margin:0}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.feature,.panel{background:linear-gradient(145deg,#102238,#0b1929);border:1px solid var(--line);border-radius:var(--radius);padding:21px}.feature .ico{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;background:#7cf0bd18;font-size:20px}.feature h3{margin:15px 0 5px;font-size:16px}.feature p{margin:0;color:var(--muted);font-size:13px}.builder{display:grid;grid-template-columns:250px 1fr;gap:17px;align-items:start}.steps{position:sticky;top:20px}.stepitem{display:flex;align-items:center;gap:11px;padding:12px;border-radius:12px;color:var(--muted);font-size:13px}.stepitem.active{background:#7cf0bd14;color:var(--green)}.stepitem.done{color:var(--text)}.stepnum{width:25px;height:25px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:11px}.active .stepnum{background:var(--green);color:#062019;border-color:var(--green)}.formpanel{min-height:420px}.formpanel h3{font-size:24px;margin:4px 0}.formpanel>p{color:var(--muted);margin:0 0 22px}.progress{height:5px;background:#ffffff12;border-radius:20px;margin-bottom:22px;overflow:hidden}.progress span{display:block;height:100%;background:var(--green);width:20%;transition:.2s}.choices{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.choice{border:1px solid var(--line);border-radius:14px;padding:15px;background:#ffffff05;color:var(--text);text-align:left}.choice:hover,.choice.selected{border-color:var(--green);background:#7cf0bd12}.choice b{display:block}.choice small{color:var(--muted)}.field{margin:15px 0}.field label{display:block;font-weight:700;font-size:13px;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;background:#081522;border:1px solid var(--line);border-radius:11px;color:var(--text);padding:12px;outline:none}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--green)}.field textarea{min-height:90px;resize:vertical}.hint{color:var(--muted);font-size:11px;margin-top:6px}.formactions{display:flex;justify-content:space-between;gap:12px;margin-top:24px}.formactions button{min-width:112px}.back{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:12px;padding:12px 17px}.result{display:none}.result.show{display:block}.resultgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.resultcard{background:#ffffff06;border:1px solid var(--line);border-radius:15px;padding:16px}.resultcard h4{margin:0 0 7px}.resultcard p,.resultcard li{color:var(--muted);font-size:13px}.resultcard ul{padding-left:18px;margin:8px 0}.tag{display:inline-block;padding:5px 9px;border-radius:20px;background:#7cf0bd17;color:var(--green);font-size:11px;font-weight:800}.actionlist{list-style:none;padding:0!important}.actionlist li{padding:9px 0;border-bottom:1px solid #ffffff12;display:flex;gap:9px}.actionlist input{accent-color:var(--green)}.notice{border:1px solid #6c5a2b;background:#d8a83b12;color:#e7d4a2;border-radius:12px;padding:12px;font-size:12px;margin-top:15px}.footer{border-top:1px solid #ffffff12;padding:27px 0;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.hidden{display:none!important}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:48px}.preview{max-width:500px}.features{grid-template-columns:1fr 1fr}.builder{grid-template-columns:1fr}.steps{position:static;display:flex;overflow:auto}.stepitem{min-width:max-content}.stepitem span:last-child{display:none}}
+@media(max-width:560px){.wrap{padding:0 16px}.navlinks{display:none}.hero h1{letter-spacing:-2px}.features,.choices,.resultgrid{grid-template-columns:1fr}.section{padding:42px 0}.formpanel{padding:16px}.hero{gap:25px}.proof{gap:10px}}
 </style>
 </head>
 <body>
+<header class="wrap nav"><a class="brand" href="#"><span class="logo">⌁</span> SaaS Radar</a><nav class="navlinks"><a href="#fonctionnalites">Fonctionnalités</a><a href="#outil">Analyser une idée</a><a href="#methode">Notre méthode</a></nav><a class="navcta" href="#outil">Lancer mon analyse ↗</a></header>
 <main>
-<section id="intro">
-<span class="intro-tag">✦ TON COACH DE PROJET EN 30 JOURS</span>
-<h1>Transforme ton idée en un plan clair.</h1>
-<p class="lead">Réponds à quelques questions sur ton niveau, tes moyens et tes envies. Boutik30 construit ensuite un parcours progressif, avec des missions adaptées à ta situation.</p>
-<div class="progress-wrap"><div class="progress-meta"><span id="step-label">Étape 1 sur 4</span><span id="step-percent">25 %</span></div><div class="progress"><span id="progress-fill"></span></div></div>
-<div id="qs"></div>
-<div class="wizard-nav"><button class="alt" id="prev" type="button" disabled>← Précédent</button><button class="main" id="next-step" type="button">Continuer →</button><button class="main" id="go" type="button" hidden>Créer mon programme ↗</button></div>
-<p class="err" id="err" role="alert"></p>
+<section class="wrap hero">
+<div><div class="eyebrow">Le copilote de tes projets digitaux</div><h1>Une idée. Un plan.<br><span class="gradient">Un vrai départ.</span></h1><p>Explore les idées de SaaS, d'outils IA, de produits numériques et de commerce. Évalue leur potentiel, repère les difficultés et construis un plan concret avant d'investir.</p><div class="heroactions"><a class="primary" href="#outil">Analyser mon idée <span>→</span></a><a class="secondary" href="#fonctionnalites">Découvrir la plateforme</a></div><div class="proof"><span>Gratuit pour démarrer</span><span>Sans carte bancaire</span><span>Progression sauvegardée sur cet appareil</span></div></div>
+<div class="preview"><div class="previewtop"><b>APERÇU DU RADAR</b><span class="live">● MODE DÉMO</span></div><div class="score"><div class="ring"><b>72</b></div><div class="scoretext"><b>Indice de préparation</b><small>Exemple fictif pour illustrer l'outil</small></div></div><div class="minirow"><div class="minicard"><small>Clarté du problème</small><b>Bonne</b></div><div class="minicard"><small>Complexité</small><b>Modérée</b></div><div class="minicard"><small>Budget de départ</small><b>À estimer</b></div><div class="minicard"><small>Prochaine étape</small><b>Valider</b></div></div><div class="bars"><i style="height:35%"></i><i style="height:50%"></i><i style="height:43%"></i><i style="height:66%"></i><i style="height:58%"></i><i style="height:82%"></i><i style="height:72%"></i></div><div class="previewtop"><span>Exemple visuel — pas une donnée de marché</span><span>↗</span></div></div>
 </section>
-
-<section id="out" hidden>
-<div class="hero">
-<div><h2>Ton programme de 30 jours est prêt</h2><div class="chips" id="chips"></div></div>
-<div class="ring" id="ring"></div>
-</div>
-<div id="next"></div>
-<div id="notes"></div>
-<div class="tabs" id="tabs" role="tablist"></div>
-<p class="wk" id="wk"></p>
-<div class="grid" id="grid"></div>
-<div class="row"><button class="alt" id="redo" type="button">Refaire le questionnaire</button></div>
+<section class="wrap section" id="fonctionnalites"><div class="sectionhead"><div class="eyebrow">Tout au même endroit</div><h2>De l'idée à un projet testable</h2><p>Pas de promesse de richesse rapide : une méthode structurée pour comprendre un marché, réduire les risques et avancer étape par étape.</p></div><div class="features">
+<article class="feature"><div class="ico">🎯</div><h3>Radar d'opportunités</h3><p>Explore plusieurs modèles de projets et compare leurs contraintes avant de choisir une direction.</p></article>
+<article class="feature"><div class="ico">🧠</div><h3>Analyse guidée</h3><p>Clarifie le problème client, la cible, la proposition de valeur et les hypothèses à vérifier.</p></article>
+<article class="feature"><div class="ico">📊</div><h3>Score de préparation</h3><p>Un indicateur pédagogique fondé sur tes réponses, jamais une prédiction de chiffre d'affaires.</p></article>
+<article class="feature"><div class="ico">🧭</div><h3>Plan de validation</h3><p>Des actions gratuites pour interroger des utilisateurs et tester l'intérêt sans lancer de ventes.</p></article>
+<article class="feature"><div class="ico">🗓️</div><h3>Programme 30 jours</h3><p>Un parcours progressif pour passer de la recherche à un premier prototype.</p></article>
+<article class="feature"><div class="ico">💬</div><h3>Assistant de réflexion</h3><p>Des questions et pistes de réflexion intégrées pour t'aider à préciser ton projet.</p></article>
+</div></section>
+<section class="wrap section" id="outil"><div class="sectionhead"><div class="eyebrow">Ton espace de travail</div><h2>Construis ton radar personnel</h2><p>Réponds aux étapes. Tu obtiendras une première analyse structurée et un plan de progression adapté à tes contraintes.</p></div>
+<div class="builder"><aside class="steps" id="steps"><div class="stepitem active"><span class="stepnum">1</span><span>Ton idée</span></div><div class="stepitem"><span class="stepnum">2</span><span>Ton profil</span></div><div class="stepitem"><span class="stepnum">3</span><span>Tes moyens</span></div><div class="stepitem"><span class="stepnum">4</span><span>Ton objectif</span></div><div class="stepitem"><span class="stepnum">5</span><span>Ton analyse</span></div></aside>
+<div class="panel formpanel" id="wizard"><div class="progress"><span id="progressbar"></span></div><div id="stepcontent"></div><div class="formactions"><button class="back" id="prev" type="button">← Retour</button><button class="primary" id="next" type="button">Continuer →</button></div></div>
+<div class="panel result" id="result"><div class="eyebrow">Ton rapport personnel</div><h3 id="resulttitle">Ton premier radar</h3><p style="color:var(--muted)">Une lecture de départ construite à partir de tes réponses.</p><div class="resultgrid" id="resultgrid"></div><div class="notice">Cet outil est un prototype éducatif : il ne consulte pas de données de marché en direct, ne vérifie pas la concurrence automatiquement et ne prédit pas les revenus. Vérifie chaque hypothèse auprès de vraies personnes avant tout investissement.</div><h3 style="margin-top:22px">Ton plan de départ</h3><ul class="actionlist" id="plan"></ul><div class="formactions"><button class="back" id="restart">Recommencer</button><button class="primary" id="save">Sauvegarder mon rapport ↓</button></div></div></div>
 </section>
-
-<footer>Ce programme est un outil d’entraînement : il ne garantit aucun gain. Si tu as moins de 18 ans, un adulte doit t’accompagner pour tout compte en ligne, toute vente et tout paiement. Rien de ce que tu réponds n’est envoyé ni enregistré ailleurs que sur ton appareil.</footer>
+<section class="wrap section" id="methode"><div class="sectionhead"><div class="eyebrow">Une méthode responsable</div><h2>Tester avant de dépenser</h2><p>La meilleure première étape n'est pas de payer un abonnement ou de créer une société : c'est de vérifier qu'un vrai problème existe et que des personnes veulent le résoudre.</p></div><div class="features"><article class="feature"><div class="ico">1</div><h3>Comprendre</h3><p>Décris un problème précis rencontré par une catégorie de personnes.</p></article><article class="feature"><div class="ico">2</div><h3>Vérifier</h3><p>Échange avec des utilisateurs potentiels et observe les solutions qu'ils utilisent déjà.</p></article><article class="feature"><div class="ico">3</div><h3>Prototyper</h3><p>Construis une version simple et recueille des retours avant de penser à vendre.</p></article></div></section>
 </main>
-
+<footer class="wrap footer"><span>© 2026 SaaS Radar · Un projet pour apprendre à construire mieux.</span><span>Prototype gratuit · Pas de conseil financier · Pas de garantie de revenus</span></footer>
 <script>
-var Q=[
-{k:"age",t:"Quel âge as-tu ?",o:["Moins de 18 ans","18 à 25 ans","26 à 40 ans","Plus de 40 ans"]},
-{k:"niv",t:"Quel est ton niveau en e-commerce ?",o:["Débutant complet","J’ai déjà vendu quelques produits","J’ai une boutique qui tourne"]},
-{k:"biz",t:"Dans quel type de business veux-tu te lancer ?",o:["Revente d’occasion","Produits faits maison","Produits numériques","Vêtements","Dropshipping"]},
-{k:"obj",t:"Quelle somme veux-tu atteindre en un mois ?",o:["Moins de 100 €","100 à 500 €","500 à 1 000 €","Plus de 1 000 €"]},
-{k:"bud",t:"Quel budget peux-tu investir au départ ?",o:["0 €","Moins de 50 €","50 à 200 €","Plus de 200 €"]},
-{k:"tps",t:"Combien de temps par jour peux-tu y consacrer ?",o:["30 minutes","1 heure","2 heures","Plus de 2 heures"]},
-{k:"blo",t:"Quel est ton plus gros blocage ?",o:["Je ne sais pas par où commencer","Je n’ai pas d’idée de produit","Je n’ai pas de budget","Je manque de confiance","Je ne sais pas faire de marketing"]}
-];
-var BIZ=[
-{w:"Vinted ou Leboncoin",p:"des objets que tu possèdes déjà et que tu n’utilises plus"},
-{w:"Etsy, Instagram ou un marché local",p:"des créations faites main"},
-{w:"Etsy ou une plateforme de produits numériques",p:"des modèles, fiches ou guides à télécharger"},
-{w:"Vinted ou une boutique en ligne",p:"des vêtements en bon état ou une petite collection"},
-{w:"une boutique en ligne",p:"un produit acheté chez un fournisseur et expédié à ton client"}
-];
-var MIN=[30,60,120,150];
-var WEEKS=["Semaine 1","Semaine 2","Semaine 3","Semaine 4"];
-var WNAMES=["Les fondations","Préparer ton offre","Trouver tes premiers clients","Progresser et grandir"];
-var BLO=[
-"Tu ne sais pas par où commencer : suis les jours dans l’ordre, un seul à la fois, c’est fait pour ça.",
-"Tu n’as pas d’idée de produit : les jours 2 à 4 sont là pour en trouver une à partir de ce qui se vend déjà.",
-"Tu n’as pas de budget : commence avec ce que tu possèdes déjà, tu n’as rien à acheter pour apprendre.",
-"Tu manques de confiance : chaque jour a une petite mission. Valide-la, et tu verras ta progression grandir.",
-"Tu ne sais pas faire de marketing : la semaine 3 t’apprend l’essentiel, sans jargon, avec des actions simples."
-];
-var KEY="ec30:done",A={},W=0,STEP=0,PROJECT="";
-var STEPS=[{name:"Ton profil",from:0,to:2},{name:"Ton projet",from:2,to:4},{name:"Tes moyens",from:4,to:6},{name:"Ton objectif",from:6,to:7}];
-function $(i){return document.getElementById(i)}
-function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-
-function renderQs(){
-  var st=STEPS[STEP];
-  $("qs").innerHTML=Q.slice(st.from,st.to).map(function(q){
-    return '<fieldset class="q"><legend>'+q.t+'</legend><div class="opts">'+q.o.map(function(o,i){
-      return '<label><input type="radio" name="'+q.k+'" value="'+i+'" '+(A[q.k]===i?'checked':'')+'><span>'+o+'</span></label>';
-    }).join("")+'</div></fieldset>';
-  }).join("");
-  if(STEP===3){
-    $("qs").innerHTML+='<div class="optional"><label for="project-desc">Décris ton idée ou ton projet (facultatif)</label><textarea id="project-desc" maxlength="500" placeholder="Ex. : J’aimerais créer une petite marque de vêtements, mais je ne sais pas comment commencer…">'+esc(PROJECT)+'</textarea><small>Tu peux laisser cette case vide et continuer.</small></div>';
-  }
-  $("step-label").textContent="Étape "+(STEP+1)+" sur 4 · "+st.name;
-  $("step-percent").textContent=Math.round((STEP+1)/4*100)+" %";
-  $("progress-fill").style.width=((STEP+1)/4*100)+"%";
-  $("prev").disabled=STEP===0;
-  $("next-step").hidden=STEP===3;
-  $("go").hidden=STEP!==3;
-}
-
-function days(b){
-  var w=b.w,p=b.p;
-  return [
-  ["Comprendre le modèle","Cherche comment fonctionne ce type de vente et note en trois phrases comment tu gagnerais de l’argent."],
-  ["Étudier le marché","Repère dix articles proches de "+p+" déjà vendus sur "+w+", avec leur prix."],
-  ["Définir ton client idéal","Écris qui il est, ce qu’il cherche, et ce qui l’empêche d’acheter."],
-  ["Choisir ton produit test","Choisis UN seul produit à tester et écris pourquoi il peut plaire."],
-  ["Analyser trois concurrents","Compare leurs prix, leurs photos et leurs avis. Note ce qu’ils font bien."],
-  ["Fixer ton prix","Calcule ta marge : prix de vente moins tous tes coûts, livraison comprise."],
-  ["Bilan de la semaine 1","Relis tes notes, ajuste ton choix si besoin et prépare la semaine suivante."],
-  ["Soigner tes photos","Prends cinq photos nettes, en lumière naturelle, sur un fond simple."],
-  ["Écrire ta description","Dis ce que c’est, l’état ou la taille, et pourquoi quelqu’un l’achèterait."],
-  ["Choisir où vendre","Compare les conditions de "+w+". L’ouverture du compte se fait avec un adulte si tu as moins de 18 ans."],
-  ["Préparer la livraison","Choisis l’emballage, pèse le colis et trouve le tarif d’envoi le moins cher."],
-  ["Publier ta première annonce","Mets en ligne ton produit avec tes photos, ta description et ton prix."],
-  ["Relire et corriger","Demande l’avis de deux personnes et corrige ce qui n’est pas clair."],
-  ["Bilan de la semaine 2","Note ce qui a été facile ou difficile et ce que tu changes."],
-  ["Écrire ta promesse","Résume en une phrase pourquoi ton produit est un bon choix pour ton client."],
-  ["Créer du contenu simple","Prépare trois contenus : photo, courte vidéo ou texte. Pour publier sur un réseau social, demande l’accord d’un adulte."],
-  ["Préparer tes réponses","Écris les trois questions qu’on te posera le plus souvent, avec tes réponses."],
-  ["Tester une autre annonce","Change le titre ou la photo principale et compare les résultats."],
-  ["Demander des retours","Interroge ceux qui ont regardé sans acheter : qu’est-ce qui les a freinés ?"],
-  ["Analyser tes résultats","Compte les vues, les messages et les ventes. Qu’est-ce qui marche le mieux ?"],
-  ["Bilan de la semaine 3","Garde ce qui marche, abandonne ce qui ne marche pas."],
-  ["Améliorer ton offre","Applique les retours reçus : prix, photos, texte ou livraison."],
-  ["Suivre tes chiffres","Fais un tableau simple : ventes, coûts, bénéfice."],
-  ["Soigner ton premier client","Écris un message de remerciement et soigne l’emballage."],
-  ["Tester un deuxième produit","Reprends la méthode des jours 4 à 12, en plus rapide."],
-  ["Gagner du temps","Prépare des modèles de messages et une liste de contrôle pour l’envoi."],
-  ["Préparer le mois suivant","Fixe ce que tu veux améliorer et ce que tu veux essayer."],
-  ["Revoir erreurs et réussites","Note trois réussites et trois erreurs, avec ce que tu en retiens."],
-  ["Fixer un nouvel objectif","Choisis un objectif réaliste pour le mois prochain, en partant de tes vrais chiffres."],
-  ["Bilan final","Relis tout ton parcours. Tu as maintenant une méthode à refaire et à améliorer."]
-  ];
-}
-
-function getDone(){try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return[]}}
-function setDone(d){try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
-function weekOf(i){return Math.min(3,Math.floor(i/7))}
-
-function notes(a){
-  var n=[];
-  if(a.age==0)n.push(["Un adulte doit t’accompagner","Pour ouvrir un compte, vendre et encaisser de l’argent, il faut l’accord d’un parent ou tuteur. Parles-en dès le jour 1."]);
-  if(a.obj>=2&&a.bud<=1)n.push(["Objectif ambitieux","Viser "+Q[3].o[a.obj]+" en un mois avec un budget très limité est difficile. Vise d’abord ta première vente, puis augmente."]);
-  if(a.biz==4&&(a.age==0||a.bud==0))n.push(["À propos du dropshipping","Le dropshipping demande en général un budget et des démarches adultes. Avec peu de moyens, la revente d’occasion est un meilleur départ."]);
-  if(a.niv==2)n.push(["Tu as déjà de l’expérience","Si tu maîtrises déjà les jours 1 à 7, passe-les vite et consacre ton temps aux semaines 3 et 4."]);
-  if(a.blo>=0)n.push(["Ton principal blocage",BLO[a.blo]]);else n.push(["Ton principal blocage","Tu n’as pas indiqué de blocage particulier. Tu pourras l’ajuster au fil du programme."]);
-  return n.map(function(x){return '<div class="note"><b>'+x[0]+'</b>'+x[1]+'</div>'}).join("");
-}
-
-function fitAnalysis(a){
-  var score=0,notes=[];
-  if(a.bud===0){score-=1;notes.push("Tu pars sans budget : privilégie l’apprentissage et les tests gratuits, sans achat ni abonnement.");}
-  if(a.obj>=2&&a.bud<=1){score-=2;notes.push("Ton objectif mensuel est élevé par rapport au budget annoncé : il vaut mieux le considérer comme une ambition à long terme, pas comme une prévision.");}
-  if(a.tps>=2){score+=1;notes.push("Tu disposes d’un peu plus de temps chaque jour, ce qui facilite les recherches et les exercices.");}
-  if(a.niv===2){score+=1;notes.push("Ton expérience peut t’aider à avancer plus vite sur les bases.");}
-  if(a.blo===0||a.blo===1){notes.push("Le parcours commence par clarifier ton idée et vérifier le besoin avant de passer à la suite.");}
-  var label=score<=-2?"À construire progressivement":score<=0?"Projet à tester prudemment":"Base encourageante pour apprendre";
-  return '<div class="insight"><strong>Analyse de départ : '+label+'</strong>'+notes.map(function(x){return '<p>'+esc(x)+'</p>';}).join("")+'<p>Cette estimation sert à organiser ton apprentissage. Elle ne prédit ni chiffre d’affaires ni réussite commerciale.</p></div>';
-}
-function render(){
-  var a=A,d=days(BIZ[a.biz]),done=getDone(),c=done.length,min=MIN[a.tps],nx=0,i;
-  $("chips").innerHTML=[Q[2].o[a.biz],"Environ "+min+" min par jour",Q[3].o[a.obj]+" visés","Budget : "+Q[4].o[a.bud]].map(function(t){return "<span>"+t+"</span>"}).join("");
-  $("ring").innerHTML='<svg width="104" height="104" viewBox="0 0 104 104"><circle cx="52" cy="52" r="42" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="10"/><circle cx="52" cy="52" r="42" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-dasharray="263.9" stroke-dashoffset="'+(263.9*(1-c/30))+'"/></svg><b>'+c+'/30</b>';
-  for(i=1;i<=30;i++){if(done.indexOf(i)<0){nx=i;break}}
-  $("next").innerHTML=nx?'<div class="next"><small>Ta mission du jour</small><h3>Jour '+nx+' : '+esc(d[nx-1][0])+'</h3><p>'+esc(d[nx-1][1])+'</p><button class="main" type="button" data-d="'+nx+'">Mission accomplie</button></div>':'<div class="next"><h3>Bravo, tu as terminé les 30 jours !</h3><p>Tu as maintenant une méthode complète. Refais le questionnaire pour tester un autre produit.</p></div>';
-  $("tabs").innerHTML=WEEKS.map(function(w,k){return '<button type="button" role="tab" data-w="'+k+'" aria-selected="'+(k==W)+'">'+w+'</button>'}).join("");
-  $("wk").textContent=WEEKS[W]+" : "+WNAMES[W];
-  var from=W*7,to=W==3?30:from+7,h="";
-  for(i=from;i<to;i++){
-    var ok=done.indexOf(i+1)>-1;
-    h+='<article class="card'+(ok?' done':'')+'"><span class="num">'+(i+1)+'</span><div><h3>'+esc(d[i][0])+'</h3><p>'+esc(d[i][1])+'</p><small>Environ '+min+' min</small></div><button class="chk" type="button" data-d="'+(i+1)+'" aria-pressed="'+ok+'" aria-label="Valider le jour '+(i+1)+'">✓</button></article>';
-  }
-  $("grid").innerHTML=h;
-}
-
-function collectStep(){
-  var st=STEPS[STEP],miss=0;
-  Q.slice(st.from,st.to).forEach(function(q){
-    var r=document.querySelector('input[name="'+q.k+'"]:checked');
-    if(r)A[q.k]=+r.value;else if(!(STEP===3&&q.k==="blo"))miss++;
-  });
-  if(miss){$("err").textContent="Réponds aux "+miss+" question"+(miss>1?"s":"")+" de cette étape pour continuer.";return false}
-  if(STEP===3){if(typeof A.blo==="undefined")A.blo=-1;var p=$("project-desc");PROJECT=p?p.value.trim():"";}
-  $("err").textContent="";
-  return true;
-}
-$("next-step").onclick=function(){if(!collectStep())return;STEP=Math.min(3,STEP+1);renderQs();window.scrollTo(0,0)};
-$("prev").onclick=function(){STEP=Math.max(0,STEP-1);$("err").textContent="";renderQs();window.scrollTo(0,0)};
-$("go").onclick=function(){
-  if(!collectStep())return;
-  $("notes").innerHTML=fitAnalysis(A)+notes(A)+(PROJECT?'<div class="insight"><strong>Ton idée à garder en tête</strong>'+esc(PROJECT)+'</div>':'');
-  var done=getDone(),n=0;
-  for(var i=1;i<=30;i++){if(done.indexOf(i)<0){n=i;break}}
-  W=n?weekOf(n-1):3;
-  render();
-  $("intro").hidden=true;$("out").hidden=false;window.scrollTo(0,0);
-};
-$("redo").onclick=function(){A={};STEP=0;PROJECT="";$("out").hidden=true;$("intro").hidden=false;renderQs();window.scrollTo(0,0)};
-document.addEventListener("click",function(e){
-  var b=e.target.closest("[data-d]"),t=e.target.closest("[data-w]");
-  if(t){W=+t.getAttribute("data-w");render();return}
-  if(!b)return;
-  var n=+b.getAttribute("data-d"),d=getDone(),i=d.indexOf(n);
-  if(i>-1)d.splice(i,1);else d.push(n);
-  setDone(d);render();
-});
-renderQs();
+const data={type:"SaaS / logiciel",idea:"",skill:"Débutant",time:"1 à 2 heures",budget:"0 €",goal:"500",market:"France",extra:""};
+let step=0;const content=document.getElementById('stepcontent'),bar=document.getElementById('progressbar'),prev=document.getElementById('prev'),next=document.getElementById('next');
+const steps=[()=>`<h3>Quel projet veux-tu explorer ?</h3><p>Choisis le type qui t'intéresse le plus. Tu pourras le préciser ensuite.</p><div class="choices">${["SaaS / logiciel","Outil basé sur l'IA","Produit numérique","E-commerce","Service en ligne","Je ne sais pas encore"].map((v,i)=>`<button class="choice ${data.type===v?'selected':''}" data-k="type" data-v="${v}"><b>${["💻","✨","📦","🛍️","🧩","🧭"][i]} ${v}</b><small>Explorer ce modèle de projet</small></button>`).join('')}</div><div class="field"><label>Décris ton idée (facultatif)</label><textarea id="idea" placeholder="Ex. : un outil qui aide les petites associations à organiser leurs inscriptions…">${esc(data.idea)}</textarea><div class="hint">Tu peux aussi laisser vide et simplement explorer.</div></div>`,
+()=>`<h3>Quel est ton niveau actuel ?</h3><p>Le parcours sera adapté à ton expérience.</p><div class="choices">${["Débutant","Quelques bases","Intermédiaire","Déjà créé un projet"].map(v=>`<button class="choice ${data.skill===v?'selected':''}" data-k="skill" data-v="${v}"><b>${v}</b><small>${v==="Débutant"?"Je découvre encore":v==="Quelques bases"?"J'ai déjà appris quelques notions":v==="Intermédiaire"?"Je connais les bases et quelques outils":"J'ai déjà expérimenté un projet"}</small></button>`).join('')}</div><div class="field"><label>Où souhaites-tu chercher tes premiers utilisateurs ?</label><select id="market"><option>France</option><option>Europe</option><option>International</option><option>Je ne sais pas</option></select></div>`,
+()=>`<h3>Quelles sont tes ressources ?</h3><p>On va privilégier les étapes adaptées à tes moyens actuels.</p><div class="field"><label>Budget disponible pour apprendre / prototyper</label><select id="budget">${["0 €","Moins de 50 €","50 à 200 €","Plus de 200 €"].map(v=>`<option ${data.budget===v?'selected':''}>${v}</option>`).join('')}</select></div><div class="field"><label>Temps disponible par semaine</label><select id="time">${["Moins d'une heure","1 à 2 heures","3 à 5 heures","Plus de 5 heures"].map(v=>`<option ${data.time===v?'selected':''}>${v}</option>`).join('')}</select></div>`,
+()=>`<h3>Quelle ambition souhaites-tu explorer ?</h3><p>Un objectif souhaité sert à réfléchir au modèle économique. Ce n'est pas une estimation de ce que tu vas gagner.</p><div class="field"><label>Objectif de revenu mensuel à long terme (en €)</label><input id="goal" type="number" min="0" max="1000000" value="${esc(data.goal)}" placeholder="Ex. : 500"></div><div class="field"><label>Qu'aimerais-tu surtout obtenir de ce projet ?</label><select id="extra"><option value="">Choisir une priorité</option><option>Apprendre à créer un produit</option><option>Résoudre un problème concret</option><option>Construire un projet rentable à terme</option><option>Explorer plusieurs idées</option></select></div>`];
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function render(){content.innerHTML=steps[step]();bar.style.width=((step+1)/5*100)+'%';prev.style.visibility=step===0?'hidden':'visible';next.textContent=step===3?'Créer mon analyse →':'Continuer →';document.querySelectorAll('.stepitem').forEach((el,i)=>{el.classList.toggle('active',i===step);el.classList.toggle('done',i<step)});document.querySelectorAll('.choice').forEach(b=>b.addEventListener('click',()=>{data[b.dataset.k]=b.dataset.v;render()}));}
+function collect(){if(step===0){data.idea=document.getElementById('idea').value.trim()}if(step===1){data.market=document.getElementById('market').value}if(step===2){data.budget=document.getElementById('budget').value;data.time=document.getElementById('time').value}if(step===3){data.goal=document.getElementById('goal').value||"0";data.extra=document.getElementById('extra').value}}
+prev.addEventListener('click',()=>{collect();if(step>0){step--;render()}});
+next.addEventListener('click',()=>{collect();if(step<3){step++;render()}else makeReport()});
+function makeReport(){document.getElementById('wizard').classList.add('hidden');const r=document.getElementById('result');r.classList.add('show');document.getElementById('resulttitle').textContent=data.idea?data.idea.slice(0,70):"Explorer "+data.type.toLowerCase();let score=35+(data.idea.length>35?15:0)+(data.budget!=="0 €"?5:0)+(data.skill!=="Débutant"?8:0)+(data.time.includes("5")?8:0)+(data.extra?5:0);score=Math.min(score,76);const level=score<45?"À clarifier":score<62?"À structurer":"Bonne base de réflexion";const complexity=data.type.includes("SaaS")||data.type.includes("IA")?"Plutôt élevée":"Variable selon la solution";const cards=[["Indice de préparation",score+"/100","Indicateur pédagogique, pas une probabilité de réussite."],["Clarté actuelle",data.idea.length>35?"À approfondir":"À préciser","Décris le problème précis que tu veux résoudre."],["Complexité estimée",complexity,"À confirmer en découpant le prototype en petites fonctions."],["Ressources",data.budget+" · "+data.time,"Commence avec les outils gratuits et limite les dépenses."]];document.getElementById('resultgrid').innerHTML=cards.map(c=>`<article class="resultcard"><span class="tag">${esc(c[0])}</span><h4 style="margin-top:10px">${esc(c[1])}</h4><p>${esc(c[2])}</p></article>`).join('')+`<article class="resultcard"><h4>Clientèle à préciser</h4><p>Sur le marché ${esc(data.market)}, identifie un groupe précis qui rencontre le problème.</p></article><article class="resultcard"><h4>Objectif déclaré</h4><p>${esc(data.goal)} € / mois à long terme — objectif personnel, pas une prévision.</p></article>`;const tasks=["Écris le problème en une phrase simple, sans parler de ta solution.","Définis une cible précise : qui rencontre ce problème et dans quel contexte ?","Trouve 5 solutions déjà utilisées par cette cible et note leurs limites.","Discute avec 3 personnes concernées pour comprendre leurs difficultés.","Dessine une maquette très simple de ta solution, sans coder si ce n'est pas nécessaire.","Montre la maquette et demande ce qui manque ou ce qui n'est pas clair.","Décide si le problème mérite un prototype plus complet."];document.getElementById('plan').innerHTML=tasks.map((t,i)=>`<li><input type="checkbox" data-task="${i}"><span><b>Étape ${i+1}</b> — ${t}</span></li>`).join('');localStorage.setItem('saasRadarDraft',JSON.stringify(data));}
+document.getElementById('restart').addEventListener('click',()=>{step=0;Object.assign(data,{type:"SaaS / logiciel",idea:"",skill:"Débutant",time:"1 à 2 heures",budget:"0 €",goal:"500",market:"France",extra:""});document.getElementById('result').classList.remove('show');document.getElementById('wizard').classList.remove('hidden');render()});
+document.getElementById('save').addEventListener('click',()=>{const report={answers:data,completed:[...document.querySelectorAll('[data-task]:checked')].map(x=>x.dataset.task),savedAt:new Date().toISOString()};localStorage.setItem('saasRadarReport',JSON.stringify(report));const blob=new Blob([JSON.stringify(report,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mon-rapport-saas-radar.json';a.click();URL.revokeObjectURL(a.href);document.getElementById('save').textContent='Rapport sauvegardé ✓'});
+render();
 </script>
-</body>
-</html>
+</body></html>
