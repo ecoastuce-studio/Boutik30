@@ -31,7 +31,7 @@ function select(id,label,opts){return "<div class='da-field'><label for='da-"+id
 const anchor=document.querySelector("#radar-suite")||document.querySelector("#methode");if(anchor)anchor.before(root);else document.querySelector("main")?.append(root);
 const $=s=>root.querySelector(s),ids=["name","audience","problem","frequency","pain","workaround","interviews","competitors","difference","proof","mvp","difficulty","budget","price","target","costs","sources"];
 const get=()=>Object.fromEntries(ids.map(k=>[k,$("#da-"+k).value.trim()]));
-const save=()=>localStorage.setItem("sr_deep_draft",JSON.stringify(get()));
+const save=()=>{try{localStorage.setItem("sr_deep_draft",JSON.stringify(get()))}catch(e){console.warn("Brouillon non sauvegardé : stockage local indisponible.")}};
 $("#da-form").addEventListener("input",save);
 $("#da-load").onclick=()=>{let d=null;try{d=JSON.parse(localStorage.getItem("sr_deep_draft")||"null")}catch(e){localStorage.removeItem("sr_deep_draft")}if(!d){alert("Aucun brouillon valide enregistré.");return}ids.forEach(k=>{if(d[k]!==undefined)$("#da-"+k).value=d[k]})};
 $("#da-clear").onclick=()=>{if(confirm("Effacer les réponses ?")){$("#da-form").reset();$("#da-report").classList.remove("show");localStorage.removeItem("sr_deep_draft")}};
@@ -43,7 +43,7 @@ const alt=d.workaround.length>=20||competitors.length>0,hasDiff=d.difference.len
 const problem=(d.audience.length>=25?10:0)+(d.problem.length>=35?10:0)+freq*1.25+pain*1.25;
 const evidence=Math.min(20,interviews*4+(proof?4:0)+Math.min(4,sourceCount*2));
 const competition=Math.min(10,competitors.length*2)+(sourceCount?Math.min(5,sourceCount):0);
-const differentiation=hasDiff?15:0,feasibility=(mvp?5:0)+(diff?Math.max(0,5-(diff-1)*1.5):0);
+const differentiation=hasDiff?15:0,feasibility=(mvp?5:0)+(diff>0?Math.max(0,5-(diff-1)*1.5):0);
 const economics=(+d.price>0?5:0)+(+d.target>0?3:0)+(d.costs!==""?2:0);
 const readiness=Math.max(0,Math.min(100,Math.round(problem+evidence+competition+differentiation+feasibility+economics)));
 const filled=[d.audience,d.problem,d.workaround,d.competitors,d.difference,d.proof,d.mvp,d.sources].filter(x=>x.length>=15).length;
