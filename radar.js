@@ -1,6 +1,6 @@
 (() => {
 const q=s=>document.querySelector(s), esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let saved=[];try{const parsed=JSON.parse(localStorage.getItem("sr_projects")||"[]");saved=Array.isArray(parsed)?parsed:[]}catch(e){localStorage.removeItem("sr_projects");}
+let saved=[];try{const parsed=JSON.parse(localStorage.getItem("sr_projects")||"[]");saved=Array.isArray(parsed)?parsed:[]}catch(e){try{localStorage.removeItem("sr_projects")}catch(ignore){}}
 const data=[
 {name:"Assistant de devis pour indépendants",type:"IA appliquée",problem:"Les indépendants perdent du temps à rédiger leurs devis.",audience:"Freelances et petites entreprises"},
 {name:"Veille simplifiée pour petites entreprises",type:"SaaS B2B",problem:"Les petites structures ont du mal à suivre les changements utiles.",audience:"TPE d'un secteur précis"},
