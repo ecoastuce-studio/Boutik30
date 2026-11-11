@@ -98,8 +98,17 @@ function makeReport(){document.getElementById('wizard').classList.add('hidden');
 const groups=["Cadrage","Terrain","Concurrence","Prototype","Test","Décision"];
 const plan=document.getElementById('plan');
 plan.innerHTML=groups.map((group,g)=>{const start=g===0?0:g===1?7:g===2?14:g===3?20:g===4?25:28;const end=g===0?7:g===1?14:g===2?20:g===3?25:g===4?28:30;return '<li style="display:block;padding:12px 0"><b style="color:var(--green)">Semaine '+(g+1)+' — '+group+'</b><div style="color:var(--muted);font-size:12px">Jours '+(start+1)+' à '+end+'</div></li>'+plan30.slice(start,end).map((item,i)=>{const day=start+i;return '<li><input type="checkbox" data-task="'+day+'"><span><b>Jour '+(day+1)+' · '+item[0]+'</b><br>'+esc(item[1])+'<br><small style="color:var(--muted)">Résultat attendu : '+esc(item[2])+'</small></span></li>'}).join('')}).join('');
-const progress=document.createElement('p');progress.id='plan-progress';progress.style.cssText='color:var(--muted);font-size:12px;margin:8px 0';progress.textContent='0 / 30 actions terminées';plan.before(progress);
-plan.addEventListener('change',()=>{const done=plan.querySelectorAll('[data-task]:checked').length;progress.textContent=done+' / 30 actions terminées';});
+const planIntro=document.createElement('div');
+planIntro.className='resultcard';
+planIntro.style.margin='12px 0';
+planIntro.innerHTML='<h4>Ton cap pour les 30 prochains jours</h4><p>Projet : <b>'+esc(data.idea||data.type)+'</b> · Marché exploré : <b>'+esc(data.market)+'</b> · Temps disponible : <b>'+esc(data.time)+'</b> · Budget : <b>'+esc(data.budget)+'</b>.</p><p>Priorité : obtenir des preuves avant de construire. Ton objectif mensuel de '+esc(data.goal)+' € est une ambition à long terme, pas une promesse de revenu. Aucun achat n’est nécessaire pour suivre ce parcours.</p><p><b>Règle de décision :</b> ne passe à l’étape suivante que si tu as obtenu le résultat attendu. Sinon, prends plus de temps ou ajuste l’idée.</p>';
+plan.before(planIntro);
+const progress=document.createElement('p');progress.id='plan-progress';progress.style.cssText='color:var(--muted);font-size:12px;margin:8px 0';
+let completedPlan=[];try{const p=JSON.parse(localStorage.getItem('saasRadarPlanProgress')||'[]');if(Array.isArray(p))completedPlan=p.map(Number).filter(n=>Number.isInteger(n)&&n>=0&&n<30)}catch(e){}
+plan.querySelectorAll('[data-task]').forEach(box=>{if(completedPlan.includes(Number(box.dataset.task)))box.checked=true});
+function updatePlanProgress(){const done=plan.querySelectorAll('[data-task]:checked').length;progress.textContent=done+' / 30 actions terminées · '+Math.round(done/30*100)+' %';try{localStorage.setItem('saasRadarPlanProgress',JSON.stringify([...plan.querySelectorAll('[data-task]:checked')].map(x=>Number(x.dataset.task))))}catch(e){}}
+plan.before(progress);updatePlanProgress();
+plan.addEventListener('change',updatePlanProgress);
 try{localStorage.setItem('saasRadarDraft',JSON.stringify(data))}catch(e){}}
 document.getElementById('restart').addEventListener('click',()=>{step=0;Object.assign(data,{type:"SaaS / logiciel",idea:"",skill:"Débutant",time:"1 à 2 heures",budget:"0 €",goal:"500",market:"France",extra:""});document.getElementById('result').classList.remove('show');document.getElementById('wizard').classList.remove('hidden');render()});
 document.getElementById('save').addEventListener('click',()=>{const report={answers:data,completed:[...document.querySelectorAll('[data-task]:checked')].map(x=>x.dataset.task),savedAt:new Date().toISOString()};try{localStorage.setItem('saasRadarReport',JSON.stringify(report))}catch(e){}const blob=new Blob([JSON.stringify(report,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mon-rapport-saas-radar.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);document.getElementById('save').textContent='Rapport sauvegardé ✓'});
