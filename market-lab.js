@@ -107,6 +107,7 @@ function saveReportToProject(report) {
     project.updatedAt = new Date().toISOString();
     localStorage.setItem(STUDIO_KEY, JSON.stringify(saved));
   } catch (error) { console.warn("Impossible de joindre les signaux au projet.", error); }
+  window.dispatchEvent(new CustomEvent("sr-market-research-saved", { detail: { projectId: linkedProjectId, report: report } }));
 }
 function updateTrendsLink(query) {
   $("#ml-trends-link", section).href = "https://trends.google.com/trends/explore?date=today%205-y&geo=FR&q=" + encodeURIComponent(query || "");
