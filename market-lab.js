@@ -174,6 +174,7 @@ async function runSearch() {
   const cached = getCache(query.toLowerCase());
   if (cached) {
     renderReport(cached, true);
+    saveReportToProject(cached);
     button.disabled = false;
     button.textContent = "Analyser les signaux ↗";
     return;
