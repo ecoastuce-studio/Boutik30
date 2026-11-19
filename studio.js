@@ -71,6 +71,14 @@ let step=0,answers=Object.assign({},defaults),recs=[],active=null,projects=[],co
 function validProject(p){return !!(p&&typeof p.id==="string"&&p.answers&&typeof p.answers==="object"&&p.idea&&typeof p.idea.title==="string"&&Array.isArray(p.idea.mvp));}
 function readStore(){try{const data=JSON.parse(localStorage.getItem(KEY)||"null");if(data&&typeof data==="object"){if(data.answers)answers=Object.assign({},defaults,data.answers);projects=Array.isArray(data.projects)?data.projects.filter(validProject):[];competitors=Array.isArray(data.competitors)?data.competitors.filter(c=>c&&typeof c.id==="string"&&typeof c.name==="string"):[];if(data.activeId)active=projects.find(p=>p.id===data.activeId)||null;}}catch(e){console.warn("Sauvegarde SaaS Radar illisible.",e);}}
 function saveStore(){try{localStorage.setItem(KEY,JSON.stringify({answers,projects,competitors,activeId:active?active.id:null,updatedAt:new Date().toISOString()}));return true;}catch(e){console.warn("Sauvegarde locale impossible.",e);return false;}}
+window.addEventListener("sr-market-research-saved",event=>{
+ const detail=event.detail||{};
+ if(!active||detail.projectId!==active.id||!detail.report)return;
+ active.marketResearch=detail.report;
+ active.updatedAt=new Date().toISOString();
+ saveStore();
+});
+
 function setView(name){root.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.view===name)));root.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.dataset.panel===name));if(name==="workspace")renderWorkspace();if(name==="compare")renderCompetitors();if(name==="saved")renderSaved();}
 root.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>setView(b.dataset.view)));
 function opts(list,value){return list.map(v=>'<option value="'+esc(v)+'" '+(v===value?"selected":"")+'>'+esc(v)+'</option>').join("");}
