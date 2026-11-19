@@ -39,6 +39,8 @@ const input = $("#ml-query", section);
 const button = $("#ml-search", section);
 const status = $("#ml-status", section);
 let currentReport = null;
+let linkedProjectId = null;
+let linkedProjectQuery = "";
 
 function safeUrl(raw, fallback) {
   try {
@@ -94,6 +96,18 @@ function projectQuery(project) {
   const a = project.answers || {};
   return [project.idea.title, project.idea.problem, a.audience || project.idea.audience].filter(Boolean).join(" ").replace(/\s+/g, " ").slice(0, 140);
 }
+function saveReportToProject(report) {
+  if (!linkedProjectId || report.query !== linkedProjectQuery) return;
+  try {
+    const saved = JSON.parse(localStorage.getItem(STUDIO_KEY) || "null");
+    if (!saved || !Array.isArray(saved.projects)) return;
+    const project = saved.projects.find(p => p && p.id === linkedProjectId);
+    if (!project) return;
+    project.marketResearch = report;
+    project.updatedAt = new Date().toISOString();
+    localStorage.setItem(STUDIO_KEY, JSON.stringify(saved));
+  } catch (error) { console.warn("Impossible de joindre les signaux au projet.", error); }
+}
 function updateTrendsLink(query) {
   $("#ml-trends-link", section).href = "https://trends.google.com/trends/explore?date=today%205-y&geo=FR&q=" + encodeURIComponent(query || "");
 }
@@ -109,9 +123,9 @@ function renderSource(containerId, countId, items, kind) {
     if (kind === "hn") meta = dateText(item.created_at) + " · " + Number(item.points || 0) + " points · " + Number(item.comments || 0) + " commentaires";
     if (kind === "repo") meta = "Mis à jour " + dateText(item.updated_at) + " · " + Number(item.stars || 0) + " étoiles · " + (item.language || "Langage non indiqué");
     if (kind === "issue") meta = dateText(item.created_at) + " · " + Number(item.comments || 0) + " commentaires · " + (item.state || "État inconnu");
-    return '<div class="ml-result"><a href="' + escapeHtml(safeUrl(item.url, "#")) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(item.title) + '</a>' +
-      (item.description ? '<div class="ml-meta">' + escapeHtml(item.description).slice(0, 220) + '</div>' : '') +
-      '<div class="ml-meta">' + escapeHtml(meta) + '</div></div>';
+    return '<div class="ml-result"><a href="' + esc(safeUrl(item.url, "#")) + '" target="_blank" rel="noopener noreferrer">' + esc(item.title) + '</a>' +
+      (item.description ? '<div class="ml-meta">' + esc(item.description).slice(0, 220) + '</div>' : '') +
+      '<div class="ml-meta">' + esc(meta) + '</div></div>';
   }).join("");
 }
 function renderReport(report, cached) {
@@ -207,6 +221,8 @@ $("#ml-use-project", section).addEventListener("click", () => {
   const project = activeProject();
   if (!project) { status.textContent = "Aucun projet actif. Choisis d'abord une idée dans le Studio de projet."; return; }
   input.value = projectQuery(project);
+  linkedProjectId = project.id;
+  linkedProjectQuery = input.value;
   updateTrendsLink(input.value);
   status.textContent = "Sujet chargé depuis ton projet : " + project.idea.title + ". Tu peux modifier la recherche puis lancer l'analyse.";
 });
@@ -220,12 +236,14 @@ $("#ml-copy", section).addEventListener("click", async () => {
 });
 $("#ml-export", section).addEventListener("click", () => exportText("bilan-signaux-saas-radar.txt", makeSummary()));
 
+input.addEventListener("input", () => { if (linkedProjectId && input.value.trim() !== linkedProjectQuery) linkedProjectId = null; });
 try {
   const previous = localStorage.getItem(QUERY_KEY);
   if (previous) input.value = previous;
 } catch (error) { /* Optional. */ }
 const project = activeProject();
-if (project && !input.value) input.value = projectQuery(project);
+if (project && !input.value) { input.value = projectQuery(project); linkedProjectId = project.id; linkedProjectQuery = input.value; }
+if (project && project.marketResearch && project.marketResearch.query === projectQuery(project)) renderReport(project.marketResearch, true);
 updateTrendsLink(input.value);
 if (input.value) {
   const cached = getCache(input.value.toLowerCase());
